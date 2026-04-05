@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#f1c40f">
+    <title>Demétrio Refeições | Cardápio Digital</title>
+    
+    <link rel="icon" type="assets/png" href="utensilios-de-cozinha.png">
+    <link rel="apple-touch-icon" href="utensilios-de-cozinha.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        html, body { height: 100%; margin: 0; padding: 0; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-image: url('assets/fundo-xadrez.png');
+            background-repeat: repeat; background-attachment: fixed; background-size: 380px; 
+            background-position: center; background-color: #f4f4f4;
+        }
+        
+ /* --- CABEÇALHO COM A SUA NOVA IMAGEM DE TIJOLINHO --- */
+        .header-container {
+            background-color: #2c3e50; 
+            
+            /* Usando o nome exato do seu arquivo: fundo-churrasco.png */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/fundo-churrasco.png'); 
+            
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* Texto em branco para destacar sobre a imagem */
+            color: #ffffff; 
+            padding: 35px 10px; 
+            text-align: center; 
+            border-radius: 0 0 35px 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4); 
+            margin-bottom: 10px; 
+            position: relative; 
+            z-index: 2;
+        }
+
+        .header-container h1 { 
+            margin: 0; 
+            font-size: 2.1rem; 
+            /* Cor amarela/dourada para o nome se destacar */
+            color: #f1c40f; 
+            font-weight: 700;
+            letter-spacing: -1px;
+            /* Sombra forte para garantir leitura sobre o fundo de tijolos */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header-container h1 { 
+            margin: 0; 
+            font-size: 2.1rem; 
+            color: #c0392b;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.4), 
+                         4px 4px 8px rgba(0, 0, 0, 0.35); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .utensilio {
+            font-size: 1.8rem;
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
+            display: inline-block;
+        }
+        .espelhado { transform: scaleX(-1); }
+
+        .horario-limite {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffc107;
+            display: inline-block; padding: 4px 15px; border-radius: 8px;
+            font-size: 13px; font-weight: 700; margin-top: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .destaque-pilula { 
+            background: #c0392b; 
+            color: white; 
+            display: inline-block; padding: 8px 18px; border-radius: 25px; 
+            font-size: 11px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            margin-top: 10px; 
+        }
+
+        #status-loja { 
+            background: #e74c3c; color: white; padding: 12px; font-weight: 700; font-size: 14px; 
+            border-radius: 12px; margin: 15px 12px; text-align: center; display: none; 
+            border: 2px solid #c0392b; animation: pulseAviso 2s infinite;
+        }
+
+        @keyframes pulseAviso { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+        .categoria h2 { color: #2c3e50; font-weight: 700; padding: 8px 18px; background: rgba(255, 255, 255, 0.95); display: inline-block; border-radius: 0 15px 15px 0; border-left: 6px solid #c0392b; margin: 25px 0 15px; font-size: 1.1rem; text-transform: uppercase; }
+        .hoje-destaque h2 { color: #c0392b !important; border-left-color: #c0392b !important; }
+        .hoje-destaque h2::after { content: " (HOJE)"; font-size: 0.75rem; vertical-align: middle; }
+
+        .item { background: linear-gradient(90deg, #3d2b1f 0%, #5d4037 15%, #4b3621 50%, #5d4037 85%, #3d2b1f 100%); border-radius: 15px; margin: 0 12px 16px; display: flex; align-items: center; padding: 16px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 8px 20px rgba(0,0,0,0.4); border: 2px solid #2a1d15; }
+        .item img { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; margin-right: 15px; background-color: #2a1d15; border: 1px solid rgba(255,255,255,0.1); }
+        .info { flex: 1; }
+        .info h3 { margin: 0; font-size: 14px; color: #f3e5ab; line-height: 1.2; text-shadow: 2px 2px 3px #000; text-transform: uppercase; }
+        .info p { margin: 5px 0; font-size: 10px; color: #d7ccc8; }
+
+        .controles-item { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+        .seletor { display: flex; align-items: center; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 2px; border: 1px solid #2a1d15; }
+        .btn-qtde { background: #8d6e63; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #fff; transition: 0.1s; }
+        .btn-qtde:active { transform: scale(0.8); }
+        .btn-qtde:disabled { opacity: 0.3; cursor: not-allowed; }
+        .qtd-num { margin: 0 10px; font-weight: 700; font-size: 15px; min-width: 15px; text-align: center; color: #fff; }
+        .label-tam { font-size: 9px; font-weight: 800; color: #bcaaa4; text-transform: uppercase; }
+
+        #carrinho-footer {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 500px; background: #ffffff; 
+            padding: 20px 15px 30px;
+            box-sizing: border-box; display: none; z-index: 1000; 
+            border-radius: 30px 30px 0 0; border-top: 5px solid #c0392b; 
+            box-shadow: 0 -15px 35px rgba(0,0,0,0.3);
+            animation: deslizarSubir 0.4s ease-out;
+        }
+
+        @keyframes deslizarSubir { from { transform: translate(-50%, 100%); } to { transform: translate(-50%, 0); } }
+
+        .btn-fechar-modal { width: 45px; height: 6px; background: #ddd; border-radius: 10px; margin: -10px auto 20px; cursor: pointer; }
+        .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+        .select-pagamento, .input-obs { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 14px; box-sizing: border-box; }
+        #endereco-entrega, #obs-pedido, #info-pix, #campo-troco, #alerta-local { grid-column: span 2; }
+        #info-pix { background: #e8f4fd; color: #2980b9; padding: 10px; border-radius: 10px; font-size: 12px; display: none; text-align: center; border: 1px dashed #2980b9; font-weight: 600; }
+        #alerta-local { background: #fff3cd; color: #856404; padding: 10px; border-radius: 10px; font-size: 12px; display: none; text-align: center; border: 1px solid #ffeeba; font-weight: 600; }
+        .total-container { font-weight: 700; color: #c0392b; margin: 10px 0 20px; font-size: 1.6rem; text-align: center; background: #fdf2f2; padding: 15px; border-radius: 18px; border: 1px solid #f5c6cb; }
+
+        .btn-finalizar { 
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
+            color: white; border: none; border-radius: 18px; padding: 18px; 
+            font-weight: 800; width: 100%; cursor: pointer; font-size: 16px; 
+            text-transform: uppercase; 
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            animation: pulseBtnVerde 1.5s infinite;
+        }
+
+        @keyframes pulseBtnVerde {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(46, 204, 113, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        #carrinho-minimizado {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 400px; background: #2ecc71; color: white; padding: 15px;
+            border-radius: 50px; font-weight: 800; display: none; text-align: center;
+            z-index: 1001; box-shadow: 0 5px 15px rgba(0,0,0,0.3); cursor: pointer; border: 2px solid #fff;
+        }
+
+        #tela-obrigado {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98); display: none; 
+            flex-direction: column; align-items: center; justify-content: center;
+            z-index: 9999; text-align: center;
+        }
+        .btn-obrigado { background: #c0392b; color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 700; margin-top: 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div id="tela-obrigado">
+    <h1 style="color: #2b2d42; font-size: 3rem;"></h1>
+    <h1 style="color: #2b2d42;">Pedido Enviado!</h1>
+    <p style="font-size: 1.1rem; color: #8d99ae;">
+        Obrigado por pedir no Demétrio Refeições.<br>
+        Aguarde o retorno pelo WhatsApp.
+    </p>
+    <button class="btn-obrigado" onclick="document.getElementById('tela-obrigado').style.display='none'">
+        VOLTAR AO MENU
+    </button>
+</div>
+
+<div class="header-container">
+    <h1> Demétrio Refeições </h1>
+    <div class="horario-limite"> Pedidos até às 15:00h</div><br>
+    <div class="destaque-pilula"> Entrega: R$ 3,00 | Segunda a Sábado</div>
+</div>
+
+<div id="status-loja"></div>
+
+<main id="cardapio" style="padding-bottom: 120px;">
+    
+    <section id="dia-1" class="categoria">
+        <h2>Segunda-feira</h2>
+        <div class="item">
+            <img src="assets/carne-ensopada.png" alt="Carne Ensopada">
+            <div class="info"><h3>Carne Ensopada c/ Legumes</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, -1, 1)">-</button><span id="q-Ensopada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, 1, 1)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, -1, 1)">-</button><span id="q-Ensopada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, 1, 1)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/frango-grelhado.png" alt="Frango Grelhado">
+            <div class="info"><h3>Filé de Frango Grelhado</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, -1, 1)">-</button><span id="q-Frango (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, 1, 1)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, -1, 1)">-</button><span id="q-Frango (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, 1, 1)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dia-2" class="categoria">
+        <h2>Terça-feira</h2>
+        <div class="item">
+            <img src="assets/lingua.png" alt="Língua">
+            <div class="info"><h3>Língua c/ Batata</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (P)', 15, -1, 2)">-</button><span id="q-Língua (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('L ngua (P)', 15, 1, 2)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (G)', 18, -1, 2)">-</button><span id="q-Língua (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('L ngua (G)', 18, 1, 2)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/frango-milanesa.png" alt="Frango a Milanesa">
+            <div class="info"><h3>Frango a Milanesa c/ Fritas</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, -1, 2)">-</button><span id="q-Milanesa (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, 1, 2)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, -1, 2)">-</button><span id="q-Milanesa (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, 1, 2)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dia-3" class="categoria">
+        <h2>Quarta-feira</h2>
+        <div class="item">
+            <img src="assets/linguica.png" alt="Linguiça">
+            <div class="info"><h3>Linguiça Fina c/ Batata Sauté</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, -1, 3)">-</button><span id="q-Linguiça (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, 1, 3)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, -1, 3)">-</button><span id="q-Linguiça (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, 1, 3)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/strogonoff.png" alt="Strogonoff">
+            <div class="info"><h3>Strogonoff de Frango</h3><p>Arroz, feijão e batata palha</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, -1, 3)">-</button><span id="q-Strogonoff (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, 1, 3)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, -1, 3)">-</button><span id="q-Strogonoff (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, 1, 3)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dia-4" class="categoria">
+        <h2>Quinta-feira</h2>
+        <div class="item">
+            <img src="assets/dobradinha.png" alt="Dobradinha">
+            <div class="info"><h3>Dobradinha</h3><p>Arroz, feijão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, -1, 4)">-</button><span id="q-Dobradinha (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, 1, 4)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, -1, 4)">-</button><span id="q-Dobradinha (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, 1, 4)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/carne-assada.png" alt="Carne Assada">
+            <div class="info"><h3>Carne Assada c/ Batata Corada</h3><p>Arroz, feijão e macarrão</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Assada (P)', 15, -1, 4)">-</button><span id="q-Assada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Assada (P)', 15, 1, 4)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Assada (G)', 18, -1, 4)">-</button><span id="q-Assada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Assada (G)', 18, 1, 4)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dia-5" class="categoria">
+        <h2>Sexta-feira</h2>
+        <div class="item">
+            <img src="assets/carre.png" alt="Carré">
+            <div class="info"><h3>Carré Frito ao Molho</h3><p>Arroz, feijão e purê</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (P)', 15, -1, 5)">-</button><span id="q-Carré (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carr  (P)', 15, 1, 5)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (G)', 18, -1, 5)">-</button><span id="q-Carré (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carr  (G)', 18, 1, 5)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/calabresa.png" alt="Calabresa">
+            <div class="info"><h3>Calabresa Acebolada</h3><p>Arroz, feijão e purê</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Calabresa (P)', 15, -1, 5)">-</button><span id="q-Calabresa (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Calabresa (P)', 15, 1, 5)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Calabresa (G)', 18, -1, 5)">-</button><span id="q-Calabresa (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Calabresa (G)', 18, 1, 5)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dia-6" class="categoria">
+        <h2>Sábado</h2>
+        <div class="item">
+            <img src="assets/churrasco.png" alt="Churrasco">
+            <div class="info"><h3>Churrasco Misto c/ Fritas</h3><p>Arroz, feijão e maionese</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, -1, 6)">-</button><span id="q-Churrasco (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, 1, 6)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, -1, 6)">-</button><span id="q-Churrasco (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, 1, 6)">+</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/frango-assado.png" alt="Frango Assado">
+            <div class="info"><h3>Frango Assado c/ Fritas</h3><p>Arroz, feijão e farofa</p></div>
+            <div class="controles-item">
+                <span class="label-tam">P-15 | G-18</span>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango-Assado (P)', 15, -1, 6)">-</button><span id="q-Frango-Assado (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango-Assado (P)', 15, 1, 6)">+</button></div>
+                <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango-Assado (G)', 18, -1, 6)">-</button><span id="q-Frango-Assado (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango-Assado (G)', 18, 1, 6)">+</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categoria">
+        <h2>Bebidas</h2>
+        <div class="item">
+            <img src="assets/coca.png" alt="Coca-Cola">
+            <div class="info"><h3>Coca-Cola 350ml</h3><p>R$ 5,00</p></div>
+            <div class="seletor">
+                <button class="btn-qtde" onclick="alterarQtde('Coca-Cola', 5, -1, 0)">-</button>
+                <span id="q-Coca-Cola" class="qtd-num">0</span>
+                <button class="btn-qtde" onclick="alterarQtde('Coca-Cola', 5, 1, 0)">+</button>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/guarana.png" alt="Guaraná">
+            <div class="info"><h3>Guaraná 1,5lt</h3><p>R$ 7,00</p></div>
+            <div class="seletor">
+                <button class="btn-qtde" onclick="alterarQtde('Guaraná', 7, -1, 0)">-</button>
+                <span id="q-Guaraná" class="qtd-num">0</span>
+                <button class="btn-qtde" onclick="alterarQtde('Guaraná', 7, 1, 0)">+</button>
+            </div>
+        </div>
+        <div class="item">
+            <img src="assets/guaravita.png" alt="Guaravita">
+            <div class="info"><h3>Guaravita</h3><p>R$ 1,50</p></div>
+            <div class="seletor">
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 1.5, -1, 0)">-</button>
+                <span id="q-Guaravita" class="qtd-num">0</span>
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 1.5, 1, 0)">+</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="carrinho-footer">
+    <div class="btn-fechar-modal" onclick="minimizarCarrinho()"></div>
+    
+    <div class="topo-carrinho" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <span style="font-weight: 600;"> <span id="total-itens-count">0</span> itens</span>
+        <button onclick="esvaziarCarrinho()" style="background:none; color:#c0392b; border:none; font-size:12px; font-weight:700; cursor:pointer;">LIMPAR TUDO</button>
+    </div>
+
+    <div class="pagamento-container">
+        <select id="tipo-entrega" class="select-pagamento" onchange="alternarCamposConsumo(); recalcularTotal();">
+            <option value="entrega"> Quentinhas (Entrega +R$ 3,00)</option>
+            <option value="local"> Comer no Local (Prato Feito)</option>
+            <option value="retirada"> Retirada no Local</option>
+        </select>
+        
+        <select id="metodo-pagamento" class="select-pagamento" onchange="atualizarOpcoesPagamento()">
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="PIX">PIX</option>
+            <option value="Cartão">Cartão</option>
+        </select>
+
+        <div id="info-pix"> PIX: 038.816.057-89 (Liliane)</div>
+        <div id="alerta-local"> Reserve seu prato! Estaremos te aguardando.</div>
+        
+        <input type="text" id="endereco-entrega" class="input-obs" placeholder="Seu endereço completo">
+        <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: sem cebola)">
+        
+        <div id="campo-troco" style="display:none;">
+            <input type="text" id="valor-troco" class="input-obs" placeholder="Troco para quanto?">
+        </div>
+    </div>
+
+    <div class="total-container">Total: <span id="total-v">R$ 0,00</span></div>
+    
+    <button class="btn-finalizar" onclick="enviarWhatsApp()">Finalizar Pedido </button>
+</footer>
+
+<div id="carrinho-minimizado" onclick="maximizarCarrinho()"> Ver Carrinho (R$ <span id="valor-flutuante">0,00</span>)</div>
+
+<script>
+    let carrinho = [];
+    let subtotal = 0;
+    const taxaEntregaValor = 3.00;
+    const diaHoje = new Date().getDay();
+
+    window.onload = () => {
+        const endSalvo = localStorage.getItem('endereco_demetrio');
+        if(endSalvo) document.getElementById('endereco-entrega').value = endSalvo;
+
+        if (diaHoje >= 1 && diaHoje <= 6) {
+            const el = document.getElementById(`dia-${diaHoje}`);
+            if(el) { el.classList.add('hoje-destaque'); el.scrollIntoView({behavior: "smooth", block: "center"}); }
+        }
+        
+        if (new Date().getHours() >= 15) {
+            const status = document.getElementById('status-loja');
+            status.style.display = 'block';
+            status.innerText = " Horário encerrado! Pedidos aceitos apenas até às 15:00h.";
+            document.querySelectorAll('.btn-qtde').forEach(btn => btn.disabled = true);
+        }
+
+        alternarCamposConsumo();
+        recalcularTotal();
+    }
+
+    function minimizarCarrinho() { 
+        document.getElementById('carrinho-footer').style.display = 'none'; 
+        if (carrinho.length > 0) document.getElementById('carrinho-minimizado').style.display = 'block'; 
+    }
+    
+    function maximizarCarrinho() { 
+        document.getElementById('carrinho-footer').style.display = 'block'; 
+        document.getElementById('carrinho-minimizado').style.display = 'none'; 
+    }
+
+    function alternarCamposConsumo() {
+        const tipo = document.getElementById('tipo-entrega').value;
+        document.getElementById('endereco-entrega').style.display = (tipo === 'entrega') ? 'block' : 'none';
+        document.getElementById('alerta-local').style.display = (tipo === 'local') ? 'block' : 'none';
+    }
+
+    function alterarQtde(nome, preco, mudanca, diaDoPrato) {
+        if (new Date().getHours() >= 15) return;
+        if (diaDoPrato !== 0 && diaDoPrato !== diaHoje) { alert("Este prato só está disponível no dia dele!"); return; }
+
+        const item = carrinho.find(i => i.nome === nome);
+        if (item) {
+            item.quantidade += mudanca;
+            if (item.quantidade <= 0) {
+                carrinho = carrinho.filter(i => i.nome !== nome);
+            }
+        } else if (mudanca > 0) {
+            carrinho.push({ nome, preco, quantidade: 1 });
+        }
+        
+        const elQtd = document.getElementById(`q-${nome}`);
+        if(elQtd) {
+            const it = carrinho.find(i => i.nome === nome);
+            elQtd.innerText = it ? it.quantidade : 0;
+        }
+        recalcularTotal();
+    }
+
+    function recalcularTotal() {
+        subtotal = carrinho.reduce((acc, i) => acc + (i.preco * i.quantidade), 0);
+        const tipo = document.getElementById('tipo-entrega').value;
+        const total = (tipo === 'entrega' && subtotal > 0) ? subtotal + taxaEntregaValor : subtotal;
+
+        const valF = total.toFixed(2).replace('.', ',');
+        document.getElementById('total-v').innerText = `R$ ${valF}`;
+        document.getElementById('valor-flutuante').innerText = valF;
+        document.getElementById('total-itens-count').innerText = carrinho.reduce((acc, i) => acc + i.quantidade, 0);
+
+        if (subtotal <= 0) {
+            document.getElementById('carrinho-footer').style.display = 'none';
+            document.getElementById('carrinho-minimizado').style.display = 'none';
+        } else if (document.getElementById('carrinho-footer').style.display !== 'block') {
+            document.getElementById('carrinho-minimizado').style.display = 'block';
+        }
+    }
+
+    function esvaziarCarrinho() {
+        if(confirm("Limpar o carrinho?")) {
+            carrinho = [];
+            document.querySelectorAll('.qtd-num').forEach(el => el.innerText = '0');
+            recalcularTotal();
+        }
+    }
+
+    function atualizarOpcoesPagamento() {
+        const m = document.getElementById('metodo-pagamento').value;
+        document.getElementById('campo-troco').style.display = m === "Dinheiro" ? "block" : "none";
+        document.getElementById('info-pix').style.display = m === "PIX" ? "block" : "none";
+    }
+
+    function enviarWhatsApp() {
+        const tipo = document.getElementById('tipo-entrega').value;
+        const endereco = document.getElementById('endereco-entrega').value;
+        if(tipo === 'entrega' && !endereco) { alert("Informe o endereço!"); return; }
+        if(tipo === 'entrega') localStorage.setItem('endereco_demetrio', endereco);
+
+        document.getElementById('carrinho-footer').style.display = 'none';
+        document.getElementById('tela-obrigado').style.display = 'flex';
+
+        let textoTipo = "";
+        if(tipo === "entrega") textoTipo = " QUENTINHA (ENTREGA)";
+        else if(tipo === "local") textoTipo = " PRATO FEITO (COMER NO LOCAL)";
+        else textoTipo = " RETIRADA NO LOCAL";
+
+        let msg = `*NOVO PEDIDO - ${textoTipo}*\n`;
+        msg += "----------------------------------\n";
+        carrinho.forEach(i => msg += ` ${i.quantidade}x ${i.nome}\n`);
+        const totalFinal = (tipo === 'entrega' ? subtotal + taxaEntregaValor : subtotal);
+        msg += "----------------------------------\n";
+        msg += ` *Total: R$ ${totalFinal.toFixed(2).replace('.', ',')}*\n`;
+        msg += ` *Pagamento:* ${document.getElementById('metodo-pagamento').value}`;
+        if(document.getElementById('valor-troco').value) msg += ` (Troco p/ ${document.getElementById('valor-troco').value})`;
+        if(tipo === 'entrega') msg += `\n *Endereço:* ${endereco}`;
+        if(document.getElementById('obs-pedido').value) msg += `\n *Obs:* ${document.getElementById('obs-pedido').value}`;
+        msg += "\n\n*Pedido gerado pelo Cardápio Digital.*";
+
+        setTimeout(() => {
+            window.open(`https://wa.me/5521995838371?text=${encodeURIComponent(msg)}`);
+            carrinho = [];
+            document.querySelectorAll('.qtd-num').forEach(el => el.innerText = '0');
+            recalcularTotal();
+            setTimeout(() => { document.getElementById('tela-obrigado').style.display = 'none'; }, 3000);
+        }, 2000);
+    }
+</script>
+</body>
+</html>

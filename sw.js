@@ -1,0 +1,26 @@
+const assets = [
+    '/',
+    'index.html',
+    'css/style.css',
+    'js/script.js',
+    'manifest.json',
+    'assets/churrasco.png',
+    'assets/calabresa.png',
+    'assets/carne-assada.png',
+    'assets/carne-ensopada.png',
+    'assets/carre.png',
+    'assets/dobradinha.png',
+    'assets/frango-assado.png',
+    'assets/frango-grelhado.png',
+    'assets/frango-milanesa.png',
+    'assets/strogonoff.png',
+    'assets/lingua.png',
+    'assets/linguica.png',
+    'assets/coca.png',
+    'assets/guarana.png',
+    'assets/guaravita.png',
+    'assets/refrigerante-25.png',
+    'assets/fundo-xadrez.png',
+    'assets/utensilios-de-cozinha.png'
+];
+
