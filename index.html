@@ -266,6 +266,19 @@
 </footer>
 
 <div id="carrinho-minimizado" onclick="maximizarCarrinho()">🛒 Ver Carrinho (R$ <span id="valor-flutuante">0,00</span>)</div>
+<script>
+    // Registro do Service Worker corrigido
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js', { scope: './' })
+                .then(reg => console.log('SW registrado com sucesso!', reg))
+                .catch(err => console.error('Falha ao registrar SW:', err));
+        });
+    }
+
+    let carrinho = [];
+    // ... restante do seu código JS (sem alterações no resto)
+</script>
 
 <script>
     let carrinho = [];
