@@ -1,11 +1,11 @@
 {
   "name": "Demétrio Refeições",
   "short_name": "Demétrio",
-  "description": "Cardápio Digital Demétrio Refeições",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#f1c40f",
+  "scope": "./",
   "icons": [
     {
       "src": "assets/utensilios-de-cozinha.png",
@@ -16,7 +16,8 @@
     {
       "src": "assets/utensilios-de-cozinha.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

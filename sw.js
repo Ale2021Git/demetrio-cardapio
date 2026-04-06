@@ -1,24 +1,25 @@
-const CACHE_NAME = 'demetrio-v2'; // Mude a versão sempre que atualizar o código
+const CACHE_NAME = 'demetrio-v1';
 const assets = [
-    './',
-    './index.html',
-    './manifest.json',
-    './assets/utensilios-de-cozinha.png',
-    './assets/fundo-xadrez.png',
-    './assets/fundo-churrasco.png'
+  './',
+  './index.html',
+  './manifest.json',
+  './assets/utensilios-de-cozinha.png',
+  './assets/fundo-xadrez.png'
 ];
 
-// Instalação do Cache
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(assets))
-    );
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(assets);
+    })
+  );
 });
 
-// Estratégia: Tenta a Internet primeiro, se falhar usa o Cache (Ideal para Cardápios)
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        fetch(event.request).catch(() => caches.match(event.request))
-    );
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });
 
