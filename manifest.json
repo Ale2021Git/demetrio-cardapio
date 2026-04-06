@@ -1,6 +1,7 @@
 {
   "name": "Demétrio Refeições",
   "short_name": "Demétrio",
+  "description": "Cardápio Digital Demétrio Refeições",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",

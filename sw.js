@@ -1,26 +1,24 @@
+const CACHE_NAME = 'demetrio-v2'; // Mude a versão sempre que atualizar o código
 const assets = [
-    '/',
-    'index.html',
-    'css/style.css',
-    'js/script.js',
-    'manifest.json',
-    'assets/churrasco.png',
-    'assets/calabresa.png',
-    'assets/carne-assada.png',
-    'assets/carne-ensopada.png',
-    'assets/carre.png',
-    'assets/dobradinha.png',
-    'assets/frango-assado.png',
-    'assets/frango-grelhado.png',
-    'assets/frango-milanesa.png',
-    'assets/strogonoff.png',
-    'assets/lingua.png',
-    'assets/linguica.png',
-    'assets/coca.png',
-    'assets/guarana.png',
-    'assets/guaravita.png',
-    'assets/refrigerante-25.png',
-    'assets/fundo-xadrez.png',
-    'assets/utensilios-de-cozinha.png'
+    './',
+    './index.html',
+    './manifest.json',
+    './assets/utensilios-de-cozinha.png',
+    './assets/fundo-xadrez.png',
+    './assets/fundo-churrasco.png'
 ];
+
+// Instalação do Cache
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(cache => cache.addAll(assets))
+    );
+});
+
+// Estratégia: Tenta a Internet primeiro, se falhar usa o Cache (Ideal para Cardápios)
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        fetch(event.request).catch(() => caches.match(event.request))
+    );
+});
 
