@@ -38,34 +38,54 @@
         .categoria h2 { color: #2c3e50; font-weight: 700; padding: 8px 18px; background: rgba(255, 255, 255, 0.95); display: inline-block; border-radius: 0 15px 15px 0; border-left: 6px solid #c0392b; margin: 25px 0 15px; font-size: 1.1rem; text-transform: uppercase; }
         .hoje-destaque h2 { color: #c0392b !important; border-left-color: #c0392b !important; }
         .hoje-destaque h2::after { content: " (HOJE)"; font-size: 0.75rem; vertical-align: middle; }
+        
         .item { background: linear-gradient(90deg, #3d2b1f 0%, #5d4037 15%, #4b3621 50%, #5d4037 85%, #3d2b1f 100%); border-radius: 15px; margin: 0 12px 16px; display: flex; align-items: center; padding: 16px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 8px 20px rgba(0,0,0,0.4); border: 2px solid #2a1d15; }
         .item img { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; margin-right: 15px; background-color: #2a1d15; border: 1px solid rgba(255,255,255,0.1); }
         .info { flex: 1; }
         .info h3 { margin: 0; font-size: 14px; color: #f3e5ab; text-shadow: 2px 2px 3px #000; text-transform: uppercase; }
         .info p { margin: 5px 0; font-size: 10px; color: #d7ccc8; }
+        
         .controles-item { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
         .seletor { display: flex; align-items: center; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 2px; border: 1px solid #2a1d15; }
         .btn-qtde { background: #8d6e63; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #fff; }
         .qtd-num { margin: 0 10px; font-weight: 700; font-size: 15px; color: #fff; text-align: center; min-width: 15px; }
         .label-tam { font-size: 9px; font-weight: 800; color: #bcaaa4; text-transform: uppercase; }
 
-        #carrinho-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #ffffff; padding: 20px 15px 30px; box-sizing: border-box; display: none; z-index: 1000; border-radius: 30px 30px 0 0; border-top: 5px solid #c0392b; box-shadow: 0 -15px 35px rgba(0,0,0,0.3); }
-        .btn-fechar-modal { width: 45px; height: 6px; background: #ddd; border-radius: 10px; margin: -10px auto 20px; cursor: pointer; }
-        .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
-        .select-pagamento, .input-obs { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
+        #carrinho-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #ffffff; padding: 15px 15px 30px; box-sizing: border-box; display: none; z-index: 1000; border-radius: 30px 30px 0 0; border-top: 5px solid #c0392b; box-shadow: 0 -15px 35px rgba(0,0,0,0.3); }
+        .btn-fechar-modal { width: 45px; height: 6px; background: #ddd; border-radius: 10px; margin: -5px auto 15px; cursor: pointer; }
+        
+        /* Botão Esvaziar */
+        .btn-esvaziar { background: none; border: 1.5px solid #e74c3c; color: #e74c3c; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; float: right; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
+        .btn-esvaziar:active { background: #fee2e2; transform: scale(0.95); }
+
+        .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; clear: both; }
+        .select-pagamento, .input-obs { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; font-size: 13px; }
         #endereco-entrega, #obs-pedido, #campo-troco, #info-pix { grid-column: span 2; }
         
         #info-pix { background: #f1f8ff; border: 1px dashed #2980b9; padding: 15px; border-radius: 12px; text-align: center; }
-        #info-pix p { margin: 3px 0; font-size: 12px; color: #2c3e50; }
         #chave-pix { font-weight: 700; color: #27ae60; font-size: 15px; }
         .btn-copiar { background: #2980b9; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-top: 8px; font-weight: 600; }
 
         .total-container { font-weight: 700; color: #c0392b; margin: 10px 0 20px; font-size: 1.6rem; text-align: center; background: #fdf2f2; padding: 15px; border-radius: 18px; }
-        .btn-finalizar { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; border: none; border-radius: 18px; padding: 18px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; animation: pulseBtnVerde 1.5s infinite; }
-        #carrinho-minimizado { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #2ecc71; color: white; padding: 15px; border-radius: 50px; font-weight: 800; display: none; text-align: center; z-index: 1001; cursor: pointer; border: 2px solid #fff; }
+        
+        /* Botão Finalizar Animado */
+        .btn-finalizar { 
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
+            color: white; border: none; border-radius: 18px; padding: 18px; 
+            font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; 
+            position: relative; overflow: hidden; animation: pulseBtnVerde 2s infinite; 
+            transition: transform 0.2s ease;
+        }
+        .btn-finalizar::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: rgba(255,255,255,0.2); transform: rotate(45deg); animation: lightSweep 3s infinite;
+        }
+
+        #carrinho-minimizado { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #2ecc71; color: white; padding: 15px; border-radius: 50px; font-weight: 800; display: none; text-align: center; z-index: 1001; cursor: pointer; border: 2px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         #tela-obrigado { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; text-align: center; }
         
-        @keyframes pulseBtnVerde { 0% { transform: scale(1); } 70% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        @keyframes pulseBtnVerde { 0% { transform: scale(1); } 70% { transform: scale(1.04); box-shadow: 0 0 15px rgba(46, 204, 113, 0.4); } 100% { transform: scale(1); } }
+        @keyframes lightSweep { 0% { margin-left: -100%; } 100% { margin-left: 100%; } }
         @keyframes pulseAviso { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
     </style>
 </head>
@@ -75,7 +95,7 @@
     <h1 style="font-size: 3rem;">✅</h1>
     <h1 style="color: #2b2d42;">Pedido Enviado!</h1>
     <p>Aguarde o retorno pelo WhatsApp.</p>
-    <button style="background:#c0392b; color:white; border:none; padding:10px 20px; border-radius:8px;" onclick="location.reload()">VOLTAR</button>
+    <button style="background:#c0392b; color:white; border:none; padding:15px 30px; border-radius:12px; font-weight: 700;" onclick="location.reload()">NOVO PEDIDO</button>
 </div>
 
 <div class="header-container">
@@ -253,6 +273,9 @@
 
 <footer id="carrinho-footer">
     <div class="btn-fechar-modal" onclick="minimizarCarrinho()"></div>
+    
+    <button class="btn-esvaziar" onclick="esvaziarCarrinho()">🗑️ Esvaziar</button>
+
     <div class="pagamento-container">
         <select id="tipo-entrega" class="select-pagamento" onchange="alternarCamposConsumo(); recalcularTotal();">
             <option value="entrega">🛵 Quentinhas (Entrega +R$ 3,00)</option>
@@ -269,9 +292,9 @@
         <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: sem cebola)">
         
         <div id="info-pix" style="display:none;">
-            <p>Chave PIX (CPF):</p>
+            <p style="margin:0; font-size:11px;">Chave PIX (CPF):</p>
             <p id="chave-pix">03881605789</p>
-            <p style="font-weight: 700; color: #2c3e50; font-size: 14px; margin-top: 5px;">Titular: Liliane</p>
+            <p style="font-weight: 700; color: #2c3e50; font-size: 13px; margin: 3px 0;">Titular: Liliane</p>
             <button class="btn-copiar" onclick="copiarPix()">Copiar CPF</button>
             <p style="font-size: 9px; color: #c0392b; margin-top:7px;">*Favor enviar o comprovante após finalizar.</p>
         </div>
@@ -337,9 +360,20 @@
         navigator.clipboard.writeText(chave).then(() => { alert("Chave PIX copiada!"); });
     }
 
+    // FUNÇÃO ESVAZIAR
+    function esvaziarCarrinho() {
+        if (confirm("Deseja limpar todos os itens do carrinho?")) {
+            carrinho = [];
+            document.querySelectorAll('.qtd-num').forEach(span => span.innerText = "0");
+            recalcularTotal();
+            minimizarCarrinho();
+        }
+    }
+
     function alterarQtde(nome, preco, mudanca, diaDoPrato) {
         if (new Date().getHours() >= 15) return;
         if (diaDoPrato !== 0 && diaDoPrato !== diaHoje) { alert("Este prato é de outro dia!"); return; }
+        
         const item = carrinho.find(i => i.nome === nome);
         if (item) {
             item.quantidade += mudanca;
@@ -347,8 +381,12 @@
         } else if (mudanca > 0) {
             carrinho.push({ nome, preco, quantidade: 1 });
         }
+        
         const spanQtd = document.getElementById(`q-${nome}`);
-        if(spanQtd) { const itemAtual = carrinho.find(i => i.nome === nome); spanQtd.innerText = itemAtual ? itemAtual.quantidade : 0; }
+        if(spanQtd) { 
+            const itemAtual = carrinho.find(i => i.nome === nome); 
+            spanQtd.innerText = itemAtual ? itemAtual.quantidade : 0; 
+        }
         recalcularTotal();
     }
 
@@ -357,8 +395,10 @@
         const tipo = document.getElementById('tipo-entrega').value;
         const total = (tipo === 'entrega' && subtotal > 0) ? subtotal + taxaEntregaValor : subtotal;
         const valF = total.toFixed(2).replace('.', ',');
+        
         document.getElementById('total-v').innerText = `R$ ${valF}`;
         document.getElementById('valor-flutuante').innerText = valF;
+        
         if (subtotal <= 0) {
             document.getElementById('carrinho-footer').style.display = 'none';
             document.getElementById('carrinho-minimizado').style.display = 'none';
@@ -375,10 +415,16 @@
         const troco = document.getElementById('valor-troco').value;
 
         if(tipo === 'entrega' && !endereco) { alert("Informe o endereço!"); return; }
+        if(carrinho.length === 0) { alert("Carrinho vazio!"); return; }
         if(tipo === 'entrega') localStorage.setItem('endereco_demetrio', endereco);
+
+        // Feedback visual do clique
+        const btn = document.querySelector('.btn-finalizar');
+        btn.style.transform = "scale(0.95)";
 
         let msg = `*NOVO PEDIDO - DEMÉTRIO REFEIÇÕES*\n\n`;
         carrinho.forEach(i => msg += `✅ ${i.quantidade}x ${i.nome} - R$ ${(i.preco * i.quantidade).toFixed(2).replace('.', ',')}\n`);
+        
         const totalFinal = (tipo === 'entrega' ? subtotal + taxaEntregaValor : subtotal);
         msg += `\n------------------------------\n`;
         msg += `*TOTAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*\n`;
@@ -390,8 +436,10 @@
         if(pag === 'PIX') msg += `📲 *Pagamento via PIX (Liliane)*\n*Favor enviar o comprovante.*\n`;
         if(obs) msg += `📝 *Obs:* ${obs}`;
 
-        window.open(`https://wa.me/5521995838371?text=${encodeURIComponent(msg)}`);
-        document.getElementById('tela-obrigado').style.display = 'flex';
+        setTimeout(() => {
+            window.open(`https://wa.me/5521995838371?text=${encodeURIComponent(msg)}`);
+            document.getElementById('tela-obrigado').style.display = 'flex';
+        }, 200);
     }
 </script>
 </body>
