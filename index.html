@@ -7,13 +7,11 @@
     <title>Demétrio Refeições | Cardápio Digital</title>
     
     <link rel="manifest" href="./manifest.json">
-<link rel="icon" type="image/png" href="./assets/utensilios-de-cozinha.png">
-<link rel="apple-touch-icon" href="./assets/utensilios-de-cozinha.png">
-
+    <link rel="icon" type="image/png" href="./assets/utensilios-de-cozinha.png">
+    <link rel="apple-touch-icon" href="./assets/utensilios-de-cozinha.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- TODOS OS TEUS ESTILOS MANTIDOS --- */
         html, body { height: 100%; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { 
             font-family: 'Poppins', sans-serif; 
@@ -36,7 +34,7 @@
         .horario-limite { background: rgba(0, 0, 0, 0.7); color: #ffc107; display: inline-block; padding: 4px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-top: 8px; }
         .destaque-pilula { background: #c0392b; color: white; display: inline-block; padding: 8px 18px; border-radius: 25px; font-size: 11px; font-weight: 700; margin-top: 10px; }
         #status-loja { background: #e74c3c; color: white; padding: 12px; font-weight: 700; font-size: 14px; border-radius: 12px; margin: 15px 12px; text-align: center; display: none; border: 2px solid #c0392b; animation: pulseAviso 2s infinite; }
-        @keyframes pulseAviso { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        
         .categoria h2 { color: #2c3e50; font-weight: 700; padding: 8px 18px; background: rgba(255, 255, 255, 0.95); display: inline-block; border-radius: 0 15px 15px 0; border-left: 6px solid #c0392b; margin: 25px 0 15px; font-size: 1.1rem; text-transform: uppercase; }
         .hoje-destaque h2 { color: #c0392b !important; border-left-color: #c0392b !important; }
         .hoje-destaque h2::after { content: " (HOJE)"; font-size: 0.75rem; vertical-align: middle; }
@@ -50,16 +48,25 @@
         .btn-qtde { background: #8d6e63; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #fff; }
         .qtd-num { margin: 0 10px; font-weight: 700; font-size: 15px; color: #fff; text-align: center; min-width: 15px; }
         .label-tam { font-size: 9px; font-weight: 800; color: #bcaaa4; text-transform: uppercase; }
+
         #carrinho-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #ffffff; padding: 20px 15px 30px; box-sizing: border-box; display: none; z-index: 1000; border-radius: 30px 30px 0 0; border-top: 5px solid #c0392b; box-shadow: 0 -15px 35px rgba(0,0,0,0.3); }
         .btn-fechar-modal { width: 45px; height: 6px; background: #ddd; border-radius: 10px; margin: -10px auto 20px; cursor: pointer; }
         .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
         .select-pagamento, .input-obs { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
-        #endereco-entrega, #obs-pedido, #info-pix, #campo-troco, #alerta-local { grid-column: span 2; }
+        #endereco-entrega, #obs-pedido, #campo-troco, #info-pix { grid-column: span 2; }
+        
+        #info-pix { background: #f1f8ff; border: 1px dashed #2980b9; padding: 15px; border-radius: 12px; text-align: center; }
+        #info-pix p { margin: 3px 0; font-size: 12px; color: #2c3e50; }
+        #chave-pix { font-weight: 700; color: #27ae60; font-size: 15px; }
+        .btn-copiar { background: #2980b9; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-top: 8px; font-weight: 600; }
+
         .total-container { font-weight: 700; color: #c0392b; margin: 10px 0 20px; font-size: 1.6rem; text-align: center; background: #fdf2f2; padding: 15px; border-radius: 18px; }
         .btn-finalizar { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; border: none; border-radius: 18px; padding: 18px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; animation: pulseBtnVerde 1.5s infinite; }
-        @keyframes pulseBtnVerde { 0% { transform: scale(1); } 70% { transform: scale(1.03); } 100% { transform: scale(1); } }
         #carrinho-minimizado { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #2ecc71; color: white; padding: 15px; border-radius: 50px; font-weight: 800; display: none; text-align: center; z-index: 1001; cursor: pointer; border: 2px solid #fff; }
         #tela-obrigado { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; text-align: center; }
+        
+        @keyframes pulseBtnVerde { 0% { transform: scale(1); } 70% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        @keyframes pulseAviso { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -80,7 +87,6 @@
 <div id="status-loja"></div>
 
 <main id="cardapio" style="padding-bottom: 120px;">
-    
     <section id="dia-1" class="categoria">
         <h2>Segunda-feira</h2>
         <div class="item">
@@ -258,39 +264,38 @@
             <option value="PIX">PIX</option>
             <option value="Cartão">Cartão</option>
         </select>
+        
         <input type="text" id="endereco-entrega" class="input-obs" placeholder="Endereço completo">
-        <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações">
-        <div id="campo-troco" style="display:none;"><input type="text" id="valor-troco" class="input-obs" placeholder="Troco para quanto?"></div>
+        <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: sem cebola)">
+        
+        <div id="info-pix" style="display:none;">
+            <p>Chave PIX (CPF):</p>
+            <p id="chave-pix">03881605789</p>
+            <p style="font-weight: 700; color: #2c3e50; font-size: 14px; margin-top: 5px;">Titular: Liliane</p>
+            <button class="btn-copiar" onclick="copiarPix()">Copiar CPF</button>
+            <p style="font-size: 9px; color: #c0392b; margin-top:7px;">*Favor enviar o comprovante após finalizar.</p>
+        </div>
+
+        <div id="campo-troco" style="display:none;">
+            <input type="text" id="valor-troco" class="input-obs" placeholder="Troco para quanto?">
+        </div>
     </div>
+    
     <div class="total-container">Total: <span id="total-v">R$ 0,00</span></div>
     <button class="btn-finalizar" onclick="enviarWhatsApp()">Finalizar Pedido 🚀</button>
 </footer>
 
 <div id="carrinho-minimizado" onclick="maximizarCarrinho()">🛒 Ver Carrinho (R$ <span id="valor-flutuante">0,00</span>)</div>
-<script>
-    // Registro do Service Worker corrigido
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js', { scope: './' })
-                .then(reg => console.log('SW registrado com sucesso!', reg))
-                .catch(err => console.error('Falha ao registrar SW:', err));
-        });
-    }
-
-    let carrinho = [];
-    // ... restante do seu código JS (sem alterações no resto)
-</script>
 
 <script>
+    if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js'); }); }
+
     let carrinho = [];
     let subtotal = 0;
     const taxaEntregaValor = 3.00;
     const diaHoje = new Date().getDay();
 
     window.onload = () => {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
         const endSalvo = localStorage.getItem('endereco_demetrio');
         if(endSalvo) document.getElementById('endereco-entrega').value = endSalvo;
 
@@ -307,10 +312,30 @@
         }
     }
 
-    function minimizarCarrinho() { document.getElementById('carrinho-footer').style.display = 'none'; if (carrinho.length > 0) document.getElementById('carrinho-minimizado').style.display = 'block'; }
-    function maximizarCarrinho() { document.getElementById('carrinho-footer').style.display = 'block'; document.getElementById('carrinho-minimizado').style.display = 'none'; }
-    function alternarCamposConsumo() { document.getElementById('endereco-entrega').style.display = (document.getElementById('tipo-entrega').value === 'entrega') ? 'block' : 'none'; }
-    function atualizarOpcoesPagamento() { document.getElementById('campo-troco').style.display = (document.getElementById('metodo-pagamento').value === "Dinheiro") ? "block" : "none"; }
+    function minimizarCarrinho() { 
+        document.getElementById('carrinho-footer').style.display = 'none'; 
+        if (carrinho.length > 0) document.getElementById('carrinho-minimizado').style.display = 'block'; 
+    }
+
+    function maximizarCarrinho() { 
+        document.getElementById('carrinho-footer').style.display = 'block'; 
+        document.getElementById('carrinho-minimizado').style.display = 'none'; 
+    }
+
+    function alternarCamposConsumo() { 
+        document.getElementById('endereco-entrega').style.display = (document.getElementById('tipo-entrega').value === 'entrega') ? 'block' : 'none'; 
+    }
+
+    function atualizarOpcoesPagamento() { 
+        const metodo = document.getElementById('metodo-pagamento').value;
+        document.getElementById('campo-troco').style.display = (metodo === "Dinheiro") ? "block" : "none";
+        document.getElementById('info-pix').style.display = (metodo === "PIX") ? "block" : "none";
+    }
+
+    function copiarPix() {
+        const chave = document.getElementById('chave-pix').innerText;
+        navigator.clipboard.writeText(chave).then(() => { alert("Chave PIX copiada!"); });
+    }
 
     function alterarQtde(nome, preco, mudanca, diaDoPrato) {
         if (new Date().getHours() >= 15) return;
@@ -322,7 +347,8 @@
         } else if (mudanca > 0) {
             carrinho.push({ nome, preco, quantidade: 1 });
         }
-        document.getElementById(`q-${nome}`).innerText = carrinho.find(i => i.nome === nome)?.quantidade || 0;
+        const spanQtd = document.getElementById(`q-${nome}`);
+        if(spanQtd) { const itemAtual = carrinho.find(i => i.nome === nome); spanQtd.innerText = itemAtual ? itemAtual.quantidade : 0; }
         recalcularTotal();
     }
 
@@ -344,13 +370,25 @@
     function enviarWhatsApp() {
         const tipo = document.getElementById('tipo-entrega').value;
         const endereco = document.getElementById('endereco-entrega').value;
+        const obs = document.getElementById('obs-pedido').value;
+        const pag = document.getElementById('metodo-pagamento').value;
+        const troco = document.getElementById('valor-troco').value;
+
         if(tipo === 'entrega' && !endereco) { alert("Informe o endereço!"); return; }
         if(tipo === 'entrega') localStorage.setItem('endereco_demetrio', endereco);
 
-        let msg = `*NOVO PEDIDO*\n`;
-        carrinho.forEach(i => msg += `• ${i.quantidade}x ${i.nome}\n`);
+        let msg = `*NOVO PEDIDO - DEMÉTRIO REFEIÇÕES*\n\n`;
+        carrinho.forEach(i => msg += `✅ ${i.quantidade}x ${i.nome} - R$ ${(i.preco * i.quantidade).toFixed(2).replace('.', ',')}\n`);
         const totalFinal = (tipo === 'entrega' ? subtotal + taxaEntregaValor : subtotal);
-        msg += `*Total: R$ ${totalFinal.toFixed(2).replace('.', ',')}*`;
+        msg += `\n------------------------------\n`;
+        msg += `*TOTAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*\n`;
+        msg += `------------------------------\n\n`;
+        msg += `📍 *Tipo:* ${tipo.toUpperCase()}\n`;
+        if(tipo === 'entrega') msg += `🏠 *Endereço:* ${endereco}\n`;
+        msg += `💳 *Pagamento:* ${pag}\n`;
+        if(pag === 'Dinheiro' && troco) msg += `💵 *Troco para:* ${troco}\n`;
+        if(pag === 'PIX') msg += `📲 *Pagamento via PIX (Liliane)*\n*Favor enviar o comprovante.*\n`;
+        if(obs) msg += `📝 *Obs:* ${obs}`;
 
         window.open(`https://wa.me/5521995838371?text=${encodeURIComponent(msg)}`);
         document.getElementById('tela-obrigado').style.display = 'flex';
