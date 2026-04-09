@@ -85,7 +85,7 @@
 <div class="header-container">
     <h1>Demétrio Refeições</h1>
     <div class="horario-limite">Pedidos até às 15:00h</div><br>
-    <div class="destaque-pilula">Entrega: R$ 3,00 | Segunda a Sábado</div>
+    <div class="destaque-pilula">Entrega: R$ 2,00 | Segunda a Sábado</div>
 </div>
 
 <div id="status-loja"></div>
@@ -306,11 +306,11 @@
         </div>
         <div class="item">
             <img src="assets/guaravita.png" alt="Bebida">
-            <div class="info"><h3>Guaravita</h3><p>R$ 1,50</p></div>
+            <div class="info"><h3>Guaravita</h3><p>R$ 2,00</p></div>
             <div class="seletor">
-                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 1.5, -1, 0)">-</button>
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2.0, -1, 0)">-</button>
                 <span id="q-Guaravita" class="qtd-num">0</span>
-                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 1.5, 1, 0)">+</button>
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2.0, 1, 0)">+</button>
             </div>
         </div>
     </section>
@@ -321,7 +321,7 @@
     <button class="btn-esvaziar" onclick="esvaziarCarrinho()">🗑️ Esvaziar</button>
     <div class="pagamento-container">
         <select id="tipo-entrega" class="select-pagamento" onchange="alternarCamposConsumo(); recalcularTotal();">
-            <option value="entrega">🛵 (Entrega +R$ 3,00)</option>
+            <option value="entrega">🛵 (Entrega +R$ 2,00)</option>
             <option value="local">🍽️ Comer no Local</option>
             <option value="retirada">🥡 Retirada</option>
         </select>
@@ -334,8 +334,8 @@
         <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: sem cebola)">
         
         <div id="info-pix" style="display:none;">
-            <p style="margin:0; font-size:11px;">Chave PIX (CPF):</p>
-            <p id="chave-pix">03881605789</p>
+            <p style="margin:0; font-size:11px;">Chave PIX (CPF):</p>Liliane
+            <p id="chave-pix">03881605789</p> 
             <button class="btn-copiar" onclick="copiarPix()">Copiar CPF</button>
         </div>
         
@@ -360,7 +360,7 @@
 
     let carrinho = [];
     let subtotal = 0;
-    const taxaEntregaValor = 3.00;
+    const taxaEntregaValor = 2.00;
     const diaHoje = new Date().getDay();
 
     window.onload = () => {
