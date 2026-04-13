@@ -1,4 +1,4 @@
-const CACHE_NAME = 'demetrio-v5'; // Mudei para v3 aqui!
+const CACHE_NAME = 'demetrio-v5'; // Mudei para v2 aqui!
 
 const assets = [
     './',
@@ -10,7 +10,7 @@ const assets = [
     './assets/carre.png',
     './assets/dobradinha.png',
     './assets/frango-assado.png',
-    './assets/frango-grelhado.png',
+    './assets/frango-grelhado.webp',
     './assets/frango-milanesa.png',
     './assets/strogonoff.png',
     './assets/lingua.png',
