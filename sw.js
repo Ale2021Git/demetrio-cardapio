@@ -1,4 +1,4 @@
-const CACHE_NAME = 'demetrio-v5'; // Mudei para v2 aqui!
+const CACHE_NAME = 'demetrio-v6'; // Mudei para v2 aqui!
 
 const assets = [
     './',
