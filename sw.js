@@ -18,7 +18,7 @@ const assets = [
     './assets/coca.png',
     './assets/guarana.png',
     './assets/guaravita.png',
-    './assets/fundo-xadrez.png',
+    './assets/fundo-xadrez.webp',
     './assets/utensilios-de-cozinha.png'
 ];
 
