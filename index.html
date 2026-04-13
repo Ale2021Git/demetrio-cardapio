@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f1c40f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,7 +12,10 @@
     <link rel="icon" type="image/png" href="./assets/utensilios-de-cozinha.png">
     <link rel="apple-touch-icon" href="./assets/utensilios-de-cozinha.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         html, body { height: 100%; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { 
@@ -20,73 +23,72 @@
             background-image: url('assets/fundo-xadrez.png');
             background-repeat: repeat; background-attachment: fixed; background-size: 380px; 
             background-position: center; background-color: #f4f4f4;
+            color: #333;
         }
         .header-container {
             background-color: #2c3e50; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/fundo-churrasco.png'); 
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-            color: #ffffff; padding: 35px 10px; text-align: center; border-radius: 0 0 35px 35px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4); margin-bottom: 10px; position: relative; z-index: 2;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/fundo-churrasco.png'); 
+            background-size: cover; background-position: center; padding: 40px 10px; text-align: center; 
+            border-radius: 0 0 35px 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); margin-bottom: 10px;
         }
-        .header-container h1 { 
-            margin: 0; font-size: 2.1rem; color: #f1c40f; font-weight: 700; letter-spacing: -1px;
-            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.4), 4px 4px 8px rgba(0, 0, 0, 0.35); 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .horario-limite { background: rgba(0, 0, 0, 0.7); color: #ffc107; display: inline-block; padding: 4px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-top: 8px; }
-        .destaque-pilula { background: #c0392b; color: white; display: inline-block; padding: 8px 18px; border-radius: 25px; font-size: 11px; font-weight: 700; margin-top: 10px; }
-        #status-loja { background: #e74c3c; color: white; padding: 12px; font-weight: 700; font-size: 14px; border-radius: 12px; margin: 15px 12px; text-align: center; display: none; border: 2px solid #c0392b; animation: pulseAviso 2s infinite; }
+        .header-container h1 { margin: 0; font-size: 2.2rem; color: #f1c40f; font-weight: 700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .horario-limite { background: rgba(0, 0, 0, 0.8); color: #ffc107; display: inline-block; padding: 5px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; margin-top: 10px; }
+        .destaque-pilula { background: #c0392b; color: white; display: inline-block; padding: 8px 18px; border-radius: 25px; font-size: 12px; font-weight: 700; margin-top: 10px; }
         
-        .categoria h2 { color: #2c3e50; font-weight: 700; padding: 8px 18px; background: rgba(255, 255, 255, 0.95); display: inline-block; border-radius: 0 15px 15px 0; border-left: 6px solid #c0392b; margin: 25px 0 15px; font-size: 1.1rem; text-transform: uppercase; }
-        .hoje-destaque h2 { color: #c0392b !important; border-left-color: #c0392b !important; }
-        .hoje-destaque h2::after { content: " (HOJE)"; font-size: 0.75rem; vertical-align: middle; }
+        #status-loja { background: #fee2e2; color: #b91c1c; padding: 15px; font-weight: 700; border-radius: 12px; margin: 15px 12px; text-align: center; display: none; border: 2px solid #ef4444; animation: pulseAviso 2s infinite; }
         
-        .item { background: linear-gradient(90deg, #3d2b1f 0%, #5d4037 15%, #4b3621 50%, #5d4037 85%, #3d2b1f 100%); border-radius: 15px; margin: 0 12px 16px; display: flex; align-items: center; padding: 16px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6), 0 8px 20px rgba(0,0,0,0.4); border: 2px solid #2a1d15; }
-        .item img { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; margin-right: 15px; background-color: #2a1d15; border: 1px solid rgba(255,255,255,0.1); }
+        .categoria h2 { color: #2c3e50; font-weight: 700; padding: 10px 20px; background: white; display: inline-block; border-radius: 0 15px 15px 0; border-left: 6px solid #c0392b; margin: 25px 0 15px; font-size: 1.1rem; text-transform: uppercase; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        .hoje-destaque h2 { color: #c0392b !important; border-left-color: #f1c40f !important; }
+        
+        .item { background: linear-gradient(90deg, #3d2b1f 0%, #4b3621 100%); border-radius: 18px; margin: 0 12px 16px; display: flex; align-items: center; padding: 16px; box-shadow: 0 8px 15px rgba(0,0,0,0.3); border: 1px solid #2a1d15; }
+        .item img { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; margin-right: 15px; background-color: #2a1d15; }
         .info { flex: 1; }
-        .info h3 { margin: 0; font-size: 14px; color: #f3e5ab; text-shadow: 2px 2px 3px #000; text-transform: uppercase; }
-        .info p { margin: 5px 0; font-size: 10px; color: #d7ccc8; }
+        .info h3 { margin: 0; font-size: 15px; color: #f3e5ab; text-transform: uppercase; }
+        .info p { margin: 5px 0; font-size: 11px; color: #d7ccc8; }
         
-        .controles-item { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+        .controles-item { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
         .grupo-controle { display: flex; flex-direction: column; align-items: flex-end; }
-        .label-preco-topo { font-size: 10px; font-weight: 800; color: #bcaaa4; text-transform: uppercase; margin-bottom: 2px; text-shadow: 1px 1px 2px #000; }
-        
-        .seletor { display: flex; align-items: center; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 2px; border: 1px solid #2a1d15; }
-        .btn-qtde { background: #8d6e63; border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; cursor: pointer; color: #fff; }
-        .qtd-num { margin: 0 10px; font-weight: 700; font-size: 15px; color: #fff; text-align: center; min-width: 15px; }
+        .label-preco-topo { font-size: 10px; font-weight: 800; color: #bcaaa4; text-transform: uppercase; margin-bottom: 2px; }
+        .seletor { display: flex; align-items: center; background: rgba(0,0,0,0.5); border-radius: 10px; padding: 3px; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-qtde { background: #8d6e63; border: none; width: 34px; height: 34px; border-radius: 8px; color: #fff; font-size: 18px; cursor: pointer; transition: 0.2s; }
+        .btn-qtde:active { transform: scale(0.9); background: #c0392b; }
+        .qtd-num { margin: 0 12px; font-weight: 700; font-size: 16px; color: #fff; min-width: 15px; text-align: center; }
 
-        #carrinho-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #ffffff; padding: 15px 15px 30px; box-sizing: border-box; display: none; z-index: 1000; border-radius: 30px 30px 0 0; border-top: 5px solid #c0392b; box-shadow: 0 -15px 35px rgba(0,0,0,0.3); }
-        .btn-fechar-modal { width: 45px; height: 6px; background: #ddd; border-radius: 10px; margin: -5px auto 15px; cursor: pointer; }
-        .btn-esvaziar { background: none; border: 1.5px solid #e74c3c; color: #e74c3c; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; float: right; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
-        .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; clear: both; }
-        .select-pagamento, .input-obs { width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; box-sizing: border-box; font-size: 13px; }
-        #endereco-entrega, #obs-pedido, #campo-troco, #info-pix { grid-column: span 2; }
-        #info-pix { background: #f1f8ff; border: 1px dashed #2980b9; padding: 15px; border-radius: 12px; text-align: center; }
-        #chave-pix { font-weight: 700; color: #27ae60; font-size: 15px; }
-        .btn-copiar { background: #2980b9; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-top: 8px; font-weight: 600; }
-        .total-container { font-weight: 700; color: #c0392b; margin: 10px 0 20px; font-size: 1.6rem; text-align: center; background: #fdf2f2; padding: 15px; border-radius: 18px; }
-        .btn-finalizar { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; border: none; border-radius: 18px; padding: 18px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; position: relative; overflow: hidden; animation: pulseBtnVerde 2s infinite; transition: transform 0.2s ease; }
-        #carrinho-minimizado { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #2ecc71; color: white; padding: 15px; border-radius: 50px; font-weight: 800; display: none; text-align: center; z-index: 1001; cursor: pointer; border: 2px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        #tela-obrigado { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; text-align: center; }
+        #carrinho-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: white; padding: 20px 15px 35px; box-sizing: border-box; display: none; z-index: 1000; border-radius: 30px 30px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.3); border-top: 5px solid #c0392b; }
+        .btn-fechar-modal { width: 50px; height: 6px; background: #e0e0e0; border-radius: 10px; margin: -10px auto 20px; cursor: pointer; }
+        .btn-esvaziar { background: none; border: 1.5px solid #e74c3c; color: #e74c3c; padding: 6px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; float: right; cursor: pointer; margin-bottom: 10px; }
         
-        @keyframes pulseBtnVerde { 0% { transform: scale(1); } 70% { transform: scale(1.04); box-shadow: 0 0 15px rgba(46, 204, 113, 0.4); } 100% { transform: scale(1); } }
-        @keyframes pulseAviso { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .pagamento-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; clear: both; }
+        .select-pagamento, .input-obs { width: 100%; padding: 14px; border: 1.5px solid #ddd; border-radius: 12px; font-family: inherit; font-size: 14px; box-sizing: border-box; }
+        
+        #endereco-entrega, #obs-pedido, #campo-troco, #info-pix { grid-column: span 2; }
+        #info-pix { background: #f0f9ff; border: 1px dashed #0077cc; padding: 15px; border-radius: 12px; text-align: center; }
+        
+        .total-container { font-weight: 800; color: #c0392b; margin: 20px 0; font-size: 1.8rem; text-align: center; background: #fff5f5; padding: 15px; border-radius: 18px; }
+        .btn-finalizar { background: #27ae60; color: white; border: none; border-radius: 18px; padding: 20px; font-weight: 800; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 16px; }
+
+        #carrinho-minimizado { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #27ae60; color: white; padding: 18px; border-radius: 50px; font-weight: 800; display: none; text-align: center; z-index: 1001; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border: 2px solid white; }
+
+        #tela-obrigado { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; text-align: center; }
+        
+        @keyframes pulseAviso { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
     </style>
 </head>
 <body>
 
-<div id="tela-obrigado">
-    <h1 style="font-size: 3rem;">✅</h1>
-    <h1 style="color: #2b2d42;">Pedido Enviado!</h1>
+<div id="tela-obrigado" role="alert">
+    <div style="font-size: 5rem;">✅</div>
+    <h1 style="color: #2c3e50;">Pedido Enviado!</h1>
     <p>Aguarde o retorno pelo WhatsApp.</p>
-    <button style="background:#c0392b; color:white; border:none; padding:15px 30px; border-radius:12px; font-weight: 700; cursor:pointer;" onclick="location.reload()">NOVO PEDIDO</button>
+    <button style="background:#c0392b; color:white; border:none; padding:18px 40px; border-radius:15px; font-weight: 700; cursor:pointer; margin-top:20px;" onclick="location.reload()">NOVO PEDIDO</button>
 </div>
 
-<div class="header-container">
+<header class="header-container">
     <h1>Demétrio Refeições</h1>
     <div class="horario-limite">Pedidos até às 15:00h</div><br>
-    <div class="destaque-pilula">Entrega: R$ 2,00 | Segunda a Sábado</div>
-</div>
+    <div class="destaque-pilula">Entrega: R$ 2,00 | Seg a Sáb</div>
+</header>
 
 <div id="status-loja"></div>
 
@@ -95,31 +97,19 @@
     <section id="dia-1" class="categoria">
         <h2>Segunda-feira</h2>
         <div class="item">
-            <img src="assets/carne-ensopada.png" alt="Prato">
+            <img src="assets/carne-ensopada.png" alt="Carne Ensopada" loading="lazy">
             <div class="info"><h3>Carne Ensopada c/ Legumes</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, -1, 1)">-</button><span id="q-Ensopada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, 1, 1)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, -1, 1)">-</button><span id="q-Ensopada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, 1, 1)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, -1, 1)">-</button><span id="q-Ensopada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (P)', 15, 1, 1)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, -1, 1)">-</button><span id="q-Ensopada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Ensopada (G)', 18, 1, 1)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/frango-grelhado.png" alt="Prato">
+            <img src="assets/frango-grelhado.png" alt="Frango Grelhado" loading="lazy">
             <div class="info"><h3>Filé de Frango Grelhado</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, -1, 1)">-</button><span id="q-Frango (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, 1, 1)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, -1, 1)">-</button><span id="q-Frango (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, 1, 1)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, -1, 1)">-</button><span id="q-Frango (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (P)', 15, 1, 1)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, -1, 1)">-</button><span id="q-Frango (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Frango (G)', 18, 1, 1)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -127,31 +117,19 @@
     <section id="dia-2" class="categoria">
         <h2>Terça-feira</h2>
         <div class="item">
-            <img src="assets/lingua.png" alt="Prato">
+            <img src="assets/lingua.png" alt="Língua com Batata" loading="lazy">
             <div class="info"><h3>Língua c/ Batata</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (P)', 15, -1, 2)">-</button><span id="q-Língua (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Língua (P)', 15, 1, 2)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (G)', 18, -1, 2)">-</button><span id="q-Língua (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Língua (G)', 18, 1, 2)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (P)', 15, -1, 2)">-</button><span id="q-Língua (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Língua (P)', 15, 1, 2)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Língua (G)', 18, -1, 2)">-</button><span id="q-Língua (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Língua (G)', 18, 1, 2)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/frango-milanesa.png" alt="Prato">
-            <div class="info"><h3>Frango a Milanesa</h3><p>Arroz, feijão, macarrão e batata frita</p></div>
+            <img src="assets/frango-milanesa.png" alt="Frango Milanesa" loading="lazy">
+            <div class="info"><h3>Frango a Milanesa</h3><p>Arroz, feijão, macarrão e fritas</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, -1, 2)">-</button><span id="q-Milanesa (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, 1, 2)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, -1, 2)">-</button><span id="q-Milanesa (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, 1, 2)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, -1, 2)">-</button><span id="q-Milanesa (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (P)', 15, 1, 2)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, -1, 2)">-</button><span id="q-Milanesa (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Milanesa (G)', 18, 1, 2)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -159,31 +137,19 @@
     <section id="dia-3" class="categoria">
         <h2>Quarta-feira</h2>
         <div class="item">
-            <img src="assets/linguica.png" alt="Prato">
+            <img src="assets/linguica.png" alt="Linguiça" loading="lazy">
             <div class="info"><h3>Linguiça Fina c/ Batata Sauté</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, -1, 3)">-</button><span id="q-Linguiça (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, 1, 3)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, -1, 3)">-</button><span id="q-Linguiça (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, 1, 3)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, -1, 3)">-</button><span id="q-Linguiça (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (P)', 15, 1, 3)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, -1, 3)">-</button><span id="q-Linguiça (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Linguiça (G)', 18, 1, 3)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/strogonoff.png" alt="Prato">
+            <img src="assets/strogonoff.png" alt="Strogonoff" loading="lazy">
             <div class="info"><h3>Strogonoff de Frango</h3><p>Arroz, feijão e batata palha</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, -1, 3)">-</button><span id="q-Strogonoff (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, 1, 3)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, -1, 3)">-</button><span id="q-Strogonoff (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, 1, 3)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, -1, 3)">-</button><span id="q-Strogonoff (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (P)', 15, 1, 3)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, -1, 3)">-</button><span id="q-Strogonoff (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Strogonoff (G)', 18, 1, 3)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -191,31 +157,19 @@
     <section id="dia-4" class="categoria">
         <h2>Quinta-feira</h2>
         <div class="item">
-            <img src="assets/dobradinha.png" alt="Dobradinha">
-            <div class="info"><h3>Dobradinha</h3><p>Arroz, feijão, macarrão e farofa</p></div>
+            <img src="assets/dobradinha.png" alt="Dobradinha" loading="lazy">
+            <div class="info"><h3>Dobradinha Especial</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, -1, 4)">-</button><span id="q-Dobradinha (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, 1, 4)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, -1, 4)">-</button><span id="q-Dobradinha (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, 1, 4)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, -1, 4)">-</button><span id="q-Dobradinha (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (P)', 15, 1, 4)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, -1, 4)">-</button><span id="q-Dobradinha (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Dobradinha (G)', 18, 1, 4)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/carne-assada.png" alt="Carne Assada">
+            <img src="assets/carne-assada.png" alt="Carne Assada" loading="lazy">
             <div class="info"><h3>Carne Assada c/ Batata Corada</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('CarneAssada (P)', 15, -1, 4)">-</button><span id="q-CarneAssada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('CarneAssada (P)', 15, 1, 4)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('CarneAssada (G)', 18, -1, 4)">-</button><span id="q-CarneAssada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('CarneAssada (G)', 18, 1, 4)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('CarneAssada (P)', 15, -1, 4)">-</button><span id="q-CarneAssada (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('CarneAssada (P)', 15, 1, 4)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('CarneAssada (G)', 18, -1, 4)">-</button><span id="q-CarneAssada (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('CarneAssada (G)', 18, 1, 4)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -223,31 +177,19 @@
     <section id="dia-5" class="categoria">
         <h2>Sexta-feira</h2>
         <div class="item">
-            <img src="assets/carre.png" alt="Prato">
+            <img src="assets/carre.png" alt="Carré" loading="lazy">
             <div class="info"><h3>Carré Grelhado</h3><p>Arroz, feijão, macarrão e couve</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (P)', 15, -1, 5)">-</button><span id="q-Carré (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carré (P)', 15, 1, 5)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (G)', 18, -1, 5)">-</button><span id="q-Carré (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carré (G)', 18, 1, 5)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (P)', 15, -1, 5)">-</button><span id="q-Carré (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carré (P)', 15, 1, 5)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Carré (G)', 18, -1, 5)">-</button><span id="q-Carré (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Carré (G)', 18, 1, 5)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/frango-assado.png" alt="Prato">
+            <img src="assets/frango-assado.png" alt="Frango Assado" loading="lazy">
             <div class="info"><h3>Frango Assado</h3><p>Arroz, feijão, macarrão e maionese</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (P)', 15, -1, 5)">-</button><span id="q-FrangoAssado (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (P)', 15, 1, 5)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (G)', 18, -1, 5)">-</button><span id="q-FrangoAssado (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (G)', 18, 1, 5)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (P)', 15, -1, 5)">-</button><span id="q-FrangoAssado (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (P)', 15, 1, 5)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (G)', 18, -1, 5)">-</button><span id="q-FrangoAssado (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoAssado (G)', 18, 1, 5)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -255,31 +197,19 @@
     <section id="dia-6" class="categoria">
         <h2>Sábado</h2>
         <div class="item">
-            <img src="assets/churrasco.png" alt="Prato">
+            <img src="assets/churrasco.png" alt="Churrasco" loading="lazy">
             <div class="info"><h3>Churrasco Misto c/ Fritas</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, -1, 6)">-</button><span id="q-Churrasco (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, 1, 6)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, -1, 6)">-</button><span id="q-Churrasco (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, 1, 6)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, -1, 6)">-</button><span id="q-Churrasco (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (P)', 15, 1, 6)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, -1, 6)">-</button><span id="q-Churrasco (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('Churrasco (G)', 18, 1, 6)">+</button></div></div>
             </div>
         </div>
         <div class="item">
-            <img src="assets/frango-assado.png" alt="Prato">
+            <img src="assets/frango-assado.png" alt="Frango Assado Sábado" loading="lazy">
             <div class="info"><h3>Frango Assado c/ Fritas</h3><p>Arroz, feijão, macarrão e farofa</p></div>
             <div class="controles-item">
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">P-R$ 15,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (P)', 15, -1, 6)">-</button><span id="q-FrangoSábado (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (P)', 15, 1, 6)">+</button></div>
-                </div>
-                <div class="grupo-controle">
-                    <span class="label-preco-topo">G-R$ 18,00</span>
-                    <div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (G)', 18, -1, 6)">-</button><span id="q-FrangoSábado (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (G)', 18, 1, 6)">+</button></div>
-                </div>
+                <div class="grupo-controle"><span class="label-preco-topo">P-R$ 15</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (P)', 15, -1, 6)">-</button><span id="q-FrangoSábado (P)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (P)', 15, 1, 6)">+</button></div></div>
+                <div class="grupo-controle"><span class="label-preco-topo">G-R$ 18</span><div class="seletor"><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (G)', 18, -1, 6)">-</button><span id="q-FrangoSábado (G)" class="qtd-num">0</span><button class="btn-qtde" onclick="alterarQtde('FrangoSábado (G)', 18, 1, 6)">+</button></div></div>
             </div>
         </div>
     </section>
@@ -287,7 +217,7 @@
     <section class="categoria">
         <h2>Bebidas</h2>
         <div class="item">
-            <img src="assets/coca.png" alt="Bebida">
+            <img src="assets/coca.png" alt="Coca-Cola" loading="lazy">
             <div class="info"><h3>Coca-Cola 350ml</h3><p>R$ 5,00</p></div>
             <div class="seletor">
                 <button class="btn-qtde" onclick="alterarQtde('Coca-Cola', 5, -1, 0)">-</button>
@@ -296,7 +226,7 @@
             </div>
         </div>
         <div class="item">
-            <img src="assets/guarana.png" alt="Bebida">
+            <img src="assets/guarana.png" alt="Guaraná" loading="lazy">
             <div class="info"><h3>Guaraná 1,5lt</h3><p>R$ 7,00</p></div>
             <div class="seletor">
                 <button class="btn-qtde" onclick="alterarQtde('Guaraná', 7, -1, 0)">-</button>
@@ -305,12 +235,12 @@
             </div>
         </div>
         <div class="item">
-            <img src="assets/guaravita.png" alt="Bebida">
+            <img src="assets/guaravita.png" alt="Guaravita" loading="lazy">
             <div class="info"><h3>Guaravita</h3><p>R$ 2,00</p></div>
             <div class="seletor">
-                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2.0, -1, 0)">-</button>
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2, -1, 0)">-</button>
                 <span id="q-Guaravita" class="qtd-num">0</span>
-                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2.0, 1, 0)">+</button>
+                <button class="btn-qtde" onclick="alterarQtde('Guaravita', 2, 1, 0)">+</button>
             </div>
         </div>
     </section>
@@ -318,10 +248,10 @@
 
 <footer id="carrinho-footer">
     <div class="btn-fechar-modal" onclick="minimizarCarrinho()"></div>
-    <button class="btn-esvaziar" onclick="esvaziarCarrinho()">🗑️ Esvaziar</button>
+    <button class="btn-esvaziar" onclick="esvaziarCarrinho()">🗑️ Limpar</button>
     <div class="pagamento-container">
         <select id="tipo-entrega" class="select-pagamento" onchange="alternarCamposConsumo(); recalcularTotal();">
-            <option value="entrega">🛵 (Entrega +R$ 2,00)</option>
+            <option value="entrega">🛵 Entrega (+R$ 2,00)</option>
             <option value="local">🍽️ Comer no Local</option>
             <option value="retirada">🥡 Retirada</option>
         </select>
@@ -331,17 +261,13 @@
             <option value="Cartão">Cartão</option>
         </select>
         <input type="text" id="endereco-entrega" class="input-obs" placeholder="Endereço completo">
-        <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: sem cebola)">
-        
+        <input type="text" id="obs-pedido" class="input-obs" placeholder="Observações (ex: Sem cebola)">
         <div id="info-pix" style="display:none;">
-            <p style="margin:0; font-size:11px;">Chave PIX (CPF):</p>Liliane
-            <p id="chave-pix">03881605789</p> 
-            <button class="btn-copiar" onclick="copiarPix()">Copiar CPF</button>
+            <p style="margin:0; font-size:11px;">Chave PIX (CPF) - Liliane:</p>
+            <p id="chave-pix" style="font-weight:700; color:#27ae60; font-size:16px;">03881605789</p> 
+            <button class="btn-qtde" style="width:auto; padding:5px 15px; font-size:12px;" onclick="copiarPix()">Copiar CPF</button>
         </div>
-        
-        <div id="campo-troco" style="display:none;">
-            <input type="text" id="valor-troco" class="input-obs" placeholder="Troco para quanto?">
-        </div>
+        <div id="campo-troco" style="display:none;"><input type="text" id="valor-troco" class="input-obs" placeholder="Troco para quanto?"></div>
     </div>
     <div class="total-container">Total: <span id="total-v">R$ 0,00</span></div>
     <button class="btn-finalizar" onclick="enviarWhatsApp()">Finalizar Pedido 🚀</button>
@@ -351,11 +277,7 @@
 
 <script>
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(reg => console.log('SW ativo!', reg))
-                .catch(err => console.error('Erro SW:', err));
-        });
+        window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(err => console.log(err)); });
     }
 
     let carrinho = [];
@@ -369,73 +291,34 @@
 
         if (diaHoje >= 1 && diaHoje <= 6) {
             const el = document.getElementById(`dia-${diaHoje}`);
-            if(el) { 
-                el.classList.add('hoje-destaque'); 
-                el.scrollIntoView({behavior: "smooth", block: "center"}); 
-            }
+            if(el) { el.classList.add('hoje-destaque'); el.scrollIntoView({behavior: "smooth", block: "start"}); }
         }
         
         if (new Date().getHours() >= 15) {
             const status = document.getElementById('status-loja');
             status.style.display = 'block';
-            status.innerText = "⚠️ Horário encerrado (pedidos até às 15:00h)!";
+            status.innerText = "⚠️ Pedidos encerrados por hoje (até às 15h).";
             document.querySelectorAll('.btn-qtde').forEach(btn => btn.disabled = true);
-        }
-    }
-
-    function minimizarCarrinho() { 
-        document.getElementById('carrinho-footer').style.display = 'none'; 
-        if (carrinho.length > 0) document.getElementById('carrinho-minimizado').style.display = 'block'; 
-    }
-
-    function maximizarCarrinho() { 
-        document.getElementById('carrinho-footer').style.display = 'block'; 
-        document.getElementById('carrinho-minimizado').style.display = 'none'; 
-    }
-
-    function alternarCamposConsumo() { 
-        document.getElementById('endereco-entrega').style.display = (document.getElementById('tipo-entrega').value === 'entrega') ? 'block' : 'none'; 
-    }
-
-    function atualizarOpcoesPagamento() { 
-        const metodo = document.getElementById('metodo-pagamento').value;
-        document.getElementById('campo-troco').style.display = (metodo === "Dinheiro") ? "block" : "none";
-        document.getElementById('info-pix').style.display = (metodo === "PIX") ? "block" : "none";
-    }
-
-    function copiarPix() { 
-        navigator.clipboard.writeText("03881605789").then(() => { alert("Chave PIX copiada!"); }); 
-    }
-
-    function esvaziarCarrinho() {
-        if (confirm("Deseja limpar todos os itens do carrinho?")) {
-            carrinho = [];
-            document.querySelectorAll('.qtd-num').forEach(span => span.innerText = "0");
-            recalcularTotal();
-            minimizarCarrinho();
         }
     }
 
     function alterarQtde(nome, preco, mudanca, diaDoPrato) {
         if (new Date().getHours() >= 15) return;
-        
-        if (diaDoPrato !== 0 && diaDoPrato !== diaHoje) { 
-            alert("Este prato é de outro dia da semana!"); 
-            return; 
-        }
-        
+        if (diaDoPrato !== 0 && diaDoPrato !== diaHoje) { alert("Este prato é de outro dia!"); return; }
+
         const item = carrinho.find(i => i.nome === nome);
         if (item) {
             item.quantidade += mudanca;
             if (item.quantidade <= 0) carrinho = carrinho.filter(i => i.nome !== nome);
         } else if (mudanca > 0) {
             carrinho.push({ nome, preco, quantidade: 1 });
+            if ("vibrate" in navigator) navigator.vibrate(40);
         }
         
         const spanQtd = document.getElementById(`q-${nome}`);
-        if(spanQtd) { 
-            const itemAtual = carrinho.find(i => i.nome === nome); 
-            spanQtd.innerText = itemAtual ? itemAtual.quantidade : 0; 
+        if(spanQtd) {
+            const itemAtual = carrinho.find(i => i.nome === nome);
+            spanQtd.innerText = itemAtual ? itemAtual.quantidade : 0;
         }
         recalcularTotal();
     }
@@ -449,37 +332,44 @@
         document.getElementById('total-v').innerText = `R$ ${valF}`;
         document.getElementById('valor-flutuante').innerText = valF;
 
-        if (subtotal <= 0) { 
-            document.getElementById('carrinho-footer').style.display = 'none'; 
-            document.getElementById('carrinho-minimizado').style.display = 'none'; 
-        } else if (document.getElementById('carrinho-footer').style.display !== 'block') { 
-            document.getElementById('carrinho-minimizado').style.display = 'block'; 
+        if (subtotal <= 0) {
+            document.getElementById('carrinho-footer').style.display = 'none';
+            document.getElementById('carrinho-minimizado').style.display = 'none';
+        } else if (document.getElementById('carrinho-footer').style.display !== 'block') {
+            document.getElementById('carrinho-minimizado').style.display = 'block';
         }
     }
+
+    function minimizarCarrinho() { document.getElementById('carrinho-footer').style.display = 'none'; if(carrinho.length > 0) document.getElementById('carrinho-minimizado').style.display = 'block'; }
+    function maximizarCarrinho() { document.getElementById('carrinho-footer').style.display = 'block'; document.getElementById('carrinho-minimizado').style.display = 'none'; }
+    function alternarCamposConsumo() { document.getElementById('endereco-entrega').style.display = (document.getElementById('tipo-entrega').value === 'entrega') ? 'block' : 'none'; }
+    function atualizarOpcoesPagamento() { 
+        const m = document.getElementById('metodo-pagamento').value;
+        document.getElementById('campo-troco').style.display = (m === "Dinheiro") ? "block" : "none";
+        document.getElementById('info-pix').style.display = (m === "PIX") ? "block" : "none";
+    }
+    function copiarPix() { navigator.clipboard.writeText("03881605789").then(() => alert("Chave PIX copiada!")); }
+    function esvaziarCarrinho() { if (confirm("Limpar carrinho?")) { carrinho = []; document.querySelectorAll('.qtd-num').forEach(s => s.innerText = "0"); recalcularTotal(); } }
 
     function enviarWhatsApp() {
         const tipo = document.getElementById('tipo-entrega').value;
         const endereco = document.getElementById('endereco-entrega').value;
-        const obs = document.getElementById('obs-pedido').value;
         const pag = document.getElementById('metodo-pagamento').value;
         const troco = document.getElementById('valor-troco').value;
+        const obs = document.getElementById('obs-pedido').value;
 
-        if(tipo === 'entrega' && !endereco) { alert("Por favor, informe o endereço!"); return; }
-        if(carrinho.length === 0) { alert("Carrinho vazio!"); return; }
-
+        if(tipo === 'entrega' && !endereco) { alert("Informe o endereço!"); return; }
+        if(carrinho.length === 0) return;
         if(endereco) localStorage.setItem('endereco_demetrio', endereco);
 
         let msg = `*NOVO PEDIDO - DEMÉTRIO REFEIÇÕES*\n\n`;
-        carrinho.forEach(i => msg += `✅ ${i.quantidade}x ${i.nome} - R$ ${(i.preco * i.quantidade).toFixed(2).replace('.', ',')}\n`);
-        
-        const totalFinal = (tipo === 'entrega' ? subtotal + taxaEntregaValor : subtotal);
-        msg += `\n*TOTAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*\n\n`;
-        msg += `📍 *Tipo:* ${tipo.toUpperCase()}\n`;
-        msg += `💳 *Pagamento:* ${pag}\n`;
-        
-        if(tipo === 'entrega') msg += `🏠 *Endereço:* ${endereco}\n`;
-        if(pag === 'Dinheiro' && troco) msg += `💵 *Troco para:* ${troco}\n`;
-        if(obs) msg += `📝 *Obs:* ${obs}`;
+        carrinho.forEach(i => msg += `• ${i.quantidade}x ${i.nome} - R$ ${(i.preco*i.quantidade).toFixed(2).replace('.', ',')}\n`);
+        const totalF = (tipo === 'entrega' ? subtotal + taxaEntregaValor : subtotal);
+        msg += `\n*TOTAL: R$ ${totalF.toFixed(2).replace('.', ',')}*`;
+        msg += `\n\n🛵 *Tipo:* ${tipo.toUpperCase()}\n💳 *Pagamento:* ${pag}`;
+        if(tipo === 'entrega') msg += `\n🏠 *End:* ${endereco}`;
+        if(pag === 'Dinheiro' && troco) msg += `\n💵 *Troco para:* ${troco}`;
+        if(obs) msg += `\n📝 *Obs:* ${obs}`;
 
         window.open(`https://wa.me/5521995838371?text=${encodeURIComponent(msg)}`);
         document.getElementById('tela-obrigado').style.display = 'flex';
