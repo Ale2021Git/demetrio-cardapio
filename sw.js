@@ -1,43 +1,47 @@
-const CACHE_NAME = 'demetrio-v6'; // Mudei para v2 aqui!
+const CACHE_NAME = 'demetrio-v7'; // Incrementado para forçar atualização
 
 const assets = [
     './',
     './index.html',
     './manifest.json',
-    './assets/churrasco.webp',
-    './assets/carne-assada.webp',
+    './assets/utensilios-de-cozinha.png', // Ícone principal
+    './assets/fundo-xadrez.webp',
+    './assets/fundo-churrasco.webp',
     './assets/carne-ensopada.webp',
-    './assets/carre.webp',
-    './assets/dobradinha.webp',
-    './assets/frango-assado.webp',
     './assets/frango-grelhado.webp',
-    './assets/frango-milanesa.webp',
-    './assets/strogonoff.webp',
     './assets/lingua.webp',
+    './assets/frango-milanesa.webp',
     './assets/linguica.webp',
+    './assets/strogonoff.webp',
+    './assets/carne-assada.webp',
+    './assets/frango-assado.webp',
+    './assets/dobradinha.webp',
+    './assets/carre.webp',
+    './assets/churrasco.webp',
     './assets/coca.webp',
     './assets/guarana.webp',
-    './assets/guaravita.webp',
-    './assets/fundo-xadrez.webp',
-    './assets/utensilios-de-cozinha.png'
+    './assets/guaravita.webp'
 ];
 
-// Instalação e Cache
+// Instalação do Service Worker e Cache dos Ativos
 self.addEventListener('install', event => {
-    self.skipWaiting(); // Força o novo SW a assumir o controle imediatamente
+    self.skipWaiting();
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(assets))
+        caches.open(CACHE_NAME).then(cache => {
+            console.log('Cache do PWA iniciado (WebP)');
+            return cache.addAll(assets);
+        })
     );
 });
 
-// Limpeza de cache antigo
+// Ativação e limpeza de caches antigos para evitar conflitos
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames.map(cache => {
                     if (cache !== CACHE_NAME) {
-                        return caches.delete(cache); // Apaga o v1 antigo
+                        return caches.delete(cache);
                     }
                 })
             );
@@ -45,9 +49,12 @@ self.addEventListener('activate', event => {
     );
 });
 
+// Estratégia: Tenta encontrar no Cache, se não, busca na Rede
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request).then(res => res || fetch(event.request))
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })
     );
 });
 

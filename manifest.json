@@ -5,22 +5,32 @@
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f4f4f4",
+  "background_color": "#ffffff",
   "theme_color": "#f1c40f",
   "lang": "pt-BR",
   "scope": "./",
   "icons": [
     {
-      "src": "assets/utensilios-de-cozinha.png",
+      "src": "assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/utensilios-de-cozinha.png",
+      "src": "assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/fundo-xadrez.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Cardápio Demétrio Refeições"
+    }
   ]
 }
+
